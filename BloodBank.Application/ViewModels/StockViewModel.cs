@@ -5,21 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BloodBank.Core.Entities
+namespace BloodBank.Application.ViewModels
 {
-    public class Stock:BaseEntity
+    public class StockViewModel
     {
-        public Stock(decimal quantity, EBloodType bloodType, ERhFactor rhFactor)
+        public StockViewModel(decimal quantityML, EBloodType bloodType, ERhFactor rhFactor)
         {
-            QuantityML = quantity;
+            QuantityML = quantityML;
             BloodType = bloodType;
             RhFactor = rhFactor;
         }
 
-        public decimal QuantityML { get;private set; }
+        public decimal QuantityML { get; private set; }
         public EBloodType BloodType { get; private set; }
         public ERhFactor RhFactor { get; private set; }
-        //verificar se o tipo de sangue existe
-        //bloodtype e/ou rhfactor
     }
 }

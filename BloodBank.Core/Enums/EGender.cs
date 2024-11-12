@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace BloodBank.Core.Enums
 {
-    public enum EBloodType
+    public enum EGender
     {
-        A,
-        B,
-        AB,
-        O
+        M,
+        F
     }
 }

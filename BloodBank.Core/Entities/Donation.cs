@@ -8,10 +8,10 @@ namespace BloodBank.Core.Entities
 {
     public class Donation:BaseEntity
     {
-        public Donation(Guid donorId, DateTime donationDate, int quantityML)
+        public Donation(Guid donorId, int quantityML)
         {
             DonorId = donorId;
-            DonationDate = donationDate;
+            DonationDate = DateTime.Now;
             QuantityML = quantityML;
         }
 

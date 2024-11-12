@@ -14,6 +14,8 @@ namespace BloodBank.Core.Entities
             City = city;
             State = state;
             PostalCode = postalCode;
+            Donors = new List<Donor>();
+            
         }
 
         public string Street { get; private set; }
@@ -21,6 +23,7 @@ namespace BloodBank.Core.Entities
         public string State { get; private set; }
         public string PostalCode { get; private set; }
 
-        public Donor Donor { get; private set; }
+        public List<Donor> Donors { get; private set; }
+
     }
 }

@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BloodBank.Core.Enums
+namespace BloodBank.Application.Commands.UpdateAddressCommand
 {
-    public enum EBloodType
+    public class UpdateAddressCommand
     {
-        A,
-        B,
-        AB,
-        O
     }
 }

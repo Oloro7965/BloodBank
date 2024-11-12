@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BloodBank.Core.Enums
+namespace BloodBank.Application.Commands.UpdateDonorCommand
 {
-    public enum EBloodType
+    public class UpdateDonorCommandHandler
     {
-        A,
-        B,
-        AB,
-        O
     }
 }
