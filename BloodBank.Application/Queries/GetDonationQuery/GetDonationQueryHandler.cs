@@ -24,7 +24,7 @@ namespace BloodBank.Application.Queries.GetDonationQuery
             var donation = await _donationRepository.GetByIdAsync(request.Id);
             if (donation is null)
             {
-                return ResultViewModel<DonationViewModel>.Error("Este contato não existe");
+                return ResultViewModel<DonationViewModel>.Error("Esta doação não existe");
             }
 
             var DonationDetailViewModel = new DonationViewModel(donation.DonationDate

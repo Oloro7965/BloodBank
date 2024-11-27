@@ -1,4 +1,5 @@
-﻿using BloodBank.Application.Queries.GetAllDonationsQuery;
+﻿using BloodBank.Application.Commands.CreateDonationCommand;
+using BloodBank.Application.Queries.GetAllDonationsQuery;
 using BloodBank.Application.Queries.GetAllDonorsQuery;
 using BloodBank.Application.Queries.GetDonationQuery;
 using BloodBank.Application.Queries.GetDonorQuery;
@@ -36,6 +37,16 @@ namespace BloodBank.API.Controllers
             var Field = await _mediator.Send(Query);
 
             return Ok(Field);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateDonation([FromQuery] CreateDonationCommand command)
+        {
+            var DonationId = await _mediator.Send(command);
+            if (!DonationId.IsSuccess)
+            {
+                return BadRequest(DonationId.Message);
+            }
+            return Ok(DonationId);
         }
     }
 }

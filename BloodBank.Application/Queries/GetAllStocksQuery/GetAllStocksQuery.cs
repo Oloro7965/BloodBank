@@ -11,6 +11,5 @@ namespace BloodBank.Application.Queries.GetAllStocksQuery
 {
     public class GetAllStocksQuery: IRequest<ResultViewModel<List<StockViewModel>>>
     {
-        public EBloodType? bloodtype { get; set; }
     }
 }

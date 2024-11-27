@@ -1,4 +1,5 @@
-﻿using BloodBank.Core.Entities;
+﻿using BloodBank.Application.ViewModels;
+using BloodBank.Core.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BloodBank.Application.Commands.CreateDonationCommand
 {
-    public class CreateDonationCommand:IRequest<Guid>
+    public class CreateDonationCommand:IRequest<ResultViewModel<Guid>>
     {
         
         public Guid DonorId { get; set; }

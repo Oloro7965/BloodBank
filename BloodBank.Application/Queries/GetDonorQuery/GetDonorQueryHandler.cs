@@ -27,7 +27,8 @@ namespace BloodBank.Application.Queries.GetDonorQuery
             }
 
             var DonorDetailViewModel = new DonorViewModel(donor.FullName
-                 ,donor.Email, donor.Age, donor.BirthDate, donor.Gender, donor.Weight, donor.BloodType, donor.RhFactor);
+                 ,donor.Email, donor.Age, donor.BirthDate, donor.Gender.ToString(), 
+                 donor.Weight, donor.BloodType.ToString(), donor.RhFactor.ToString());
 
             //var UserDetailViewModel = UserViewModel.FromEntity(user);
             return ResultViewModel<DonorViewModel>.Success(DonorDetailViewModel);

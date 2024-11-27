@@ -1,4 +1,5 @@
 ﻿using BloodBank.Core.Entities;
+using BloodBank.Core.Enums;
 using BloodBank.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -25,16 +26,30 @@ namespace BloodBank.Infraestructure.Persistance.Repositories
             await _dbcontext.SaveChangesAsync();
         }
 
-        public async Task<List<Donor>> GetAllAsync()
+        public async Task<List<Donor>> GetAllAsync(EBloodType? bloodtype)
         {
-            return await _dbcontext.Donors.Where(u => u.IsDeleted.Equals(false)).ToListAsync();
-        }
+            if (bloodtype is null)
+            {
+                return await _dbcontext.Donors.Where(u => u.IsDeleted.Equals(false)).ToListAsync();
+            }
+            else 
+            {
+                return await _dbcontext.Donors.Where(u => u.IsDeleted.Equals(false) 
+                && u.BloodType==bloodtype).ToListAsync();
+            }
+        }        
 
         public async Task<Donor> GetByIdAsync(Guid id)
         {
             return await _dbcontext.Donors.Where(c => c.IsDeleted.Equals(false) && c.Id == id)
                 .SingleOrDefaultAsync();
         }
+
+        //public async Task<bool> IsEmailRegisteredAsync(string email)
+        //{
+            //if (_dbcontext.Donors.Where(d=>d.Email == email).SingleOrDefaultAsync()==false);
+        //    await _dbcontext.SaveChangesAsync();
+        //}
 
         public async Task SaveChangesAsync()
         {

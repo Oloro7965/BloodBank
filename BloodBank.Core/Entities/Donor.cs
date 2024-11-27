@@ -10,7 +10,7 @@ namespace BloodBank.Core.Entities
 {
     public class Donor:BaseEntity
     {
-        public Donor(string fullName, string email, DateTime birthDate, string gender, double weight, EBloodType bloodType, ERhFactor rhFactor)
+        public Donor(string fullName, string email, DateTime birthDate, EGender gender, double weight, EBloodType bloodType, ERhFactor rhFactor)
         {
             FullName = fullName;
             Email = email;
@@ -28,7 +28,7 @@ namespace BloodBank.Core.Entities
         public string Email { get; private set; }
         public int Age { get; private set; }
         public DateTime BirthDate { get; private set; }
-        public string Gender { get;private set; }
+        public EGender Gender { get;private set; }
         public double Weight { get; private set; }
         public EBloodType BloodType { get; private set; }
         public ERhFactor RhFactor { get; private set; }

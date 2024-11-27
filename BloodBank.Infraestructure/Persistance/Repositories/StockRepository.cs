@@ -1,8 +1,10 @@
-﻿using BloodBank.Core.Entities;
+﻿using Azure.Core;
+using BloodBank.Core.Entities;
 using BloodBank.Core.Enums;
 using BloodBank.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +29,7 @@ namespace BloodBank.Infraestructure.Persistance.Repositories
         }
 
         public async Task<List<Stock>> GetAllAsync()
-        {
+        { 
             return await _dbcontext.Stocks.ToListAsync();
         }
 

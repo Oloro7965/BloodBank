@@ -11,7 +11,7 @@ namespace BloodBank.Application.Queries.GetAllDonationsQuery
 {
     public class GetAllDonationsQuery: IRequest<ResultViewModel<List<DonationViewModel>>>
     {
-        public EBloodType? bloodtype { get; set; }
+        //public EBloodType? bloodtype { get; set; }
 
     }
 }

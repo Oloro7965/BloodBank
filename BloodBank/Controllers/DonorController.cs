@@ -3,6 +3,8 @@ using BloodBank.Application.Commands.DeleteDonorCommand;
 using BloodBank.Application.Commands.UpdateDonorCommand;
 using BloodBank.Application.Queries.GetAllDonorsQuery;
 using BloodBank.Application.Queries.GetDonorQuery;
+using BloodBank.Core.Entities;
+using BloodBank.Core.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,9 +22,9 @@ namespace BloodBank.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] EBloodType? bloodtype)
         {
-            var Query = new GetAllDonorsQuery();
+            var Query = new GetAllDonorsQuery(bloodtype);
 
             var Fields = await _mediator.Send(Query);
 
@@ -46,8 +48,11 @@ namespace BloodBank.API.Controllers
         public async Task<IActionResult> CreateDonor(CreateDonorCommand command)
         {
             var DonorId = await _mediator.Send(command);
-
-            return Ok();
+            if (!DonorId.IsSuccess)
+            {
+                return BadRequest(DonorId.Message);
+            }
+            return Ok(DonorId);
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateDono(UpdateDonorCommand command)

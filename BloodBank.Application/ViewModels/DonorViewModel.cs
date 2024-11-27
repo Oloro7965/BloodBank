@@ -13,8 +13,8 @@ namespace BloodBank.Application.ViewModels
             int age, 
             DateTime birthDate,
             string gender, double weight, 
-            EBloodType bloodType,
-            ERhFactor rhFactor)
+            string bloodType,
+            string rhFactor)
         {
             FullName = fullName;
             Email = email;
@@ -32,7 +32,7 @@ namespace BloodBank.Application.ViewModels
         public DateTime BirthDate { get; private set; }
         public string Gender { get; private set; }
         public double Weight { get; private set; }
-        public EBloodType BloodType { get; private set; }
-        public ERhFactor RhFactor { get; private set; }
+        public string BloodType { get; private set; }
+        public string RhFactor { get; private set; }
     }
 }

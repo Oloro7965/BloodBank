@@ -20,10 +20,11 @@ namespace BloodBank.Application.Queries.GetAllDonorsQuery
 
         public async Task<ResultViewModel<List<DonorViewModel>>> Handle(GetAllDonorsQuery request, CancellationToken cancellationToken)
         {
-            var contacts = await _donorRepository.GetAllAsync();
+            var contacts = await _donorRepository.GetAllAsync(request.bloodtype);
             //var users = _dbcontext.Users.Where(u => u.IsActive.Equals(true));
             var contactViewModel = contacts.Select(b => new DonorViewModel(b.FullName
-                 , b.Email, b.Age,b.BirthDate,b.Gender,b.Weight,b.BloodType,b.RhFactor))
+                 , b.Email, b.Age,b.BirthDate,b.Gender.ToString(),b.Weight,b.BloodType.ToString()
+                 ,b.RhFactor.ToString()))
                  .ToList();
 
             return ResultViewModel<List<DonorViewModel>>.Success(contactViewModel);

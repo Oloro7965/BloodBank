@@ -1,4 +1,5 @@
 ﻿using BloodBank.Core.Entities;
+using BloodBank.Core.Enums;
 using BloodBank.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -29,7 +30,7 @@ namespace BloodBank.Infraestructure.Persistance.Repositories
 
         public async Task<List<Donation>> GetAllAsync()
         {
-            return await _dbcontext.Donations.ToListAsync();
+             return await _dbcontext.Donations.ToListAsync();
         }
 
         public async Task<Donation> GetByIdAsync(Guid id)

@@ -22,21 +22,10 @@ namespace BloodBank.Application.Queries.GetAllDonationsQuery
         {
             var donations = await _donationRepository.GetAllAsync();
             //var users = _dbcontext.Users.Where(u => u.IsActive.Equals(true));
-            if (request.bloodtype is null)
-            {
-                var donationViewModel = donations.Select(b => new DonationViewModel(b.DonationDate
-                 , b.QuantityML))
-                 .ToList();
-                return ResultViewModel<List<DonationViewModel>>.Success(donationViewModel);
-            }
-            else
-            {
-                var donationViewModel = donations.
-                Where(d => d.Donor.BloodType == request.bloodtype).Select(b => new DonationViewModel(b.DonationDate
-                 , b.QuantityML))
-                 .ToList();
-                return ResultViewModel<List<DonationViewModel>>.Success(donationViewModel);
-            }
+            var donationViewModel = donations.Select(b => new DonationViewModel(b.DonationDate
+              , b.QuantityML))
+               .ToList();
+            return ResultViewModel<List<DonationViewModel>>.Success(donationViewModel);
         }
     }
 }

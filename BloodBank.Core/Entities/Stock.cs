@@ -15,7 +15,7 @@ namespace BloodBank.Core.Entities
             BloodType = bloodType;
             RhFactor = rhFactor;
         }
-
+        private Stock() { }
         public decimal QuantityML { get;private set; }
         public EBloodType BloodType { get; private set; }
         public ERhFactor RhFactor { get; private set; }

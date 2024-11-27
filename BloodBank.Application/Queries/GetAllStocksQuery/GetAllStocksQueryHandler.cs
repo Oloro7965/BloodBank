@@ -22,21 +22,12 @@ namespace BloodBank.Application.Queries.GetAllStocksQuery
         {
             var stocks = await _stockRepository.GetAllAsync();
             //var users = _dbcontext.Users.Where(u => u.IsActive.Equals(true));
-            if (request.bloodtype is null)
-            {
-                var stockViewModel = stocks.Select(b => new StockViewModel(b.QuantityML
-                 , b.BloodType,b.RhFactor))
-                 .ToList();
-                return ResultViewModel<List<StockViewModel>>.Success(stockViewModel);
-            }
-            else
-            {
-                var stockViewModel = stocks.
-                Where(d => d.BloodType == request.bloodtype).Select(b => new StockViewModel(b.QuantityML
-                 , b.BloodType, b.RhFactor))
-                 .ToList();
-                return ResultViewModel<List<StockViewModel>>.Success(stockViewModel);
-            }
+            //mover lógica para repository
+            var stockViewModel = stocks.Select(b => new StockViewModel(b.QuantityML
+               , b.BloodType,b.RhFactor))
+                .ToList();
+            return ResultViewModel<List<StockViewModel>>.Success(stockViewModel);
+            
         }
     }
 }
