@@ -25,7 +25,7 @@ namespace BloodBank.Application.Queries.GetStockQuery
             //var users = _dbcontext.Users.Where(u => u.IsActive.Equals(true));
             if (stock is null)
             {
-                return ResultViewModel<StockViewModel>.Error("Este contato não existe");
+                return ResultViewModel<StockViewModel>.Error("Este Estoque não existe");
 
             }
             var StockDetailViewModel = new StockViewModel(stock.QuantityML,stock.BloodType,stock.RhFactor);

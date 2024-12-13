@@ -32,7 +32,10 @@ namespace BloodBank.Infraestructure.Persistance.Repositories
         {
              return await _dbcontext.Donations.ToListAsync();
         }
-
+        public async Task<List<Donation>> GetByDonorId(Guid id)
+        {
+            return await _dbcontext.Donations.Where(d=>d.DonorId == id).ToListAsync();
+        }
         public async Task<Donation> GetByIdAsync(Guid id)
         {
             return await _dbcontext.Donations
@@ -43,5 +46,6 @@ namespace BloodBank.Infraestructure.Persistance.Repositories
         {
             await _dbcontext.SaveChangesAsync();
         }
+        //criar método novo para orderBy
     }
 }

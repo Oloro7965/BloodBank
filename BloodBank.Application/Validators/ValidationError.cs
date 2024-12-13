@@ -12,6 +12,6 @@ namespace BloodBank.Application.Validators
         public string PropertyName { get; set; }
         public string ErrorMessage { get; set; }
 
-        public override string ToString() => $"({PropertyName}, '{ErrorMessage}')";
+        public override string ToString() => $"{PropertyName}-'{ErrorMessage}'";
     }
 }

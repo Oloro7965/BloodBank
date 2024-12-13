@@ -26,24 +26,19 @@ namespace BloodBank.API.Controllers
         {
             var Query = new GetAllDonorsQuery(bloodtype);
 
-            var Fields = await _mediator.Send(Query);
+            var Donor = await _mediator.Send(Query);
 
-            return Ok(Fields);
+            return Ok(Donor);
         }
         [HttpGet("GetById")]
         public async Task<IActionResult> GetDonorById([FromQuery] Guid id)
         {
             var Query = new GetDonorQuery(id);
 
-            var Field = await _mediator.Send(Query);
+            var Donor = await _mediator.Send(Query);
 
-            return Ok(Field);
+            return Ok(Donor);
         }
-        //[HttpGet("{id}")]
-        //public IActionResult Get()
-        //{
-        //    return Ok();
-        //}
         [HttpPost]
         public async Task<IActionResult> CreateDonor(CreateDonorCommand command)
         {

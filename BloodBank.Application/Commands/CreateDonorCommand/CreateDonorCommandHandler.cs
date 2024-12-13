@@ -23,6 +23,12 @@ namespace BloodBank.Application.Commands.CreateDonorCommand
         public async Task<ResultViewModel<Guid>> Handle(CreateDonorCommand request, CancellationToken cancellationToken)
         {
             //fazer if buscando email para checar
+            var donor = await _donorRepository.SearchByEmailAsync(request.Email);
+            //var fieldwork = await _workRepository.GetByIdAsync(contact.FielWorkId);
+            if (donor is not null)
+            {
+                return ResultViewModel<Guid>.Error("Este email já existe no sistema");
+            }
             var validator = new CreateDonorValidator();
             var validationResult=validator.Validate(request);
             if (!validationResult.IsValid)
@@ -33,10 +39,12 @@ namespace BloodBank.Application.Commands.CreateDonorCommand
                     PropertyName = error.PropertyName,
                     ErrorMessage = error.ErrorMessage
                 })
-            .ToList();
-                return ResultViewModel<Guid>.Error($"{errors}");
+                .ToList();
+                return ResultViewModel<Guid>.Error(string.Join("\n",errors));
+                
             }
-            var Donor = new Donor(request.FullName, request.Email, request.BirthDate, request.Gender, request.Weight,request.BloodType,request.RhFactor);
+            var Donor = new Donor(request.FullName, request.Email, 
+                request.BirthDate, request.Gender, request.Weight,request.BloodType,request.RhFactor);
 
             await _donorRepository.AddAsync(Donor);
 

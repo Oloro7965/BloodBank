@@ -18,6 +18,7 @@ namespace BloodBank.Core.Repositories
         Task AddAsync(Donor contact);
 
         //Task<bool> IsEmailRegisteredAsync(string email);
+        Task<Donor> SearchByEmailAsync(string email);
         Task SaveChangesAsync();
     }
 }

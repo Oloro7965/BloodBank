@@ -49,6 +49,44 @@ namespace BloodBank.Core.Entities
 
             return idade;
         }
+        public bool ValidateIntervalDays(DateTime? date)
+        {
+            if (date is null)
+            {
+                return true;
+            }
+            else
+            {
+                TimeSpan Interval = DateTime.Now - date.Value;
+                if (this.Gender == EGender.M)
+                {
+                    if (Interval.Days >= 60)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        //throw new InvalidOperationException
+                         //   ("intervalo de tempo de doações para o gênero masculino não pode ser inferior a 60 dias");
+                         return false;
+                    }
+                }
+                else
+                {
+                    if (Interval.Days >= 90)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        // throw new InvalidOperationException
+                        //     ("intervalo de tempo de doações para o gênero feminino não pode ser inferior a 90 dias");
+                        return false;
+                    }
+                }
+            }
+           
+        }
         public void Delete()
         {
             this.IsDeleted=true;

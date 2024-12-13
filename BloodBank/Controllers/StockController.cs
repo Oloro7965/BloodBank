@@ -42,11 +42,6 @@ namespace BloodBank.API.Controllers
 
             return Ok(Field);
         }
-        //[HttpGet("{id}")]
-        //public IActionResult Get()
-        //{
-        //    return Ok();
-        //}
         [HttpPost]
         public async Task<IActionResult> CreateStock(CreateStockCommand command)
         {

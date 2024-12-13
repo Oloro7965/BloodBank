@@ -17,5 +17,6 @@ namespace BloodBank.Core.Repositories
         Task AddAsync(Donation contact);
 
         Task SaveChangesAsync();
+        Task<List<Donation>> GetByDonorId(Guid id);
     }
 }

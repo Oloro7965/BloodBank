@@ -13,6 +13,9 @@ namespace BloodBank.Application.Validators
     {
         public CreateDonorValidator()
         {
+            RuleFor(u => u.Email)
+            .NotEmpty().WithMessage("O e-mail é obrigatório.")
+            .EmailAddress().WithMessage("O e-mail deve ser válido.");
             RuleFor(x => x.Weight)
                 .GreaterThanOrEqualTo(50).WithMessage("Doador precisa ter pelo menos 50kg");
             RuleFor(x => x.Gender).IsInEnum().WithMessage("Gênero inválido");

@@ -44,7 +44,7 @@ namespace BloodBank.Infraestructure.Persistance.Repositories
             return await _dbcontext.Donors.Where(c => c.IsDeleted.Equals(false) && c.Id == id)
                 .SingleOrDefaultAsync();
         }
-
+        
         //public async Task<bool> IsEmailRegisteredAsync(string email)
         //{
             //if (_dbcontext.Donors.Where(d=>d.Email == email).SingleOrDefaultAsync()==false);
@@ -54,6 +54,12 @@ namespace BloodBank.Infraestructure.Persistance.Repositories
         public async Task SaveChangesAsync()
         {
             await _dbcontext.SaveChangesAsync();
+        }
+
+        public async Task<Donor> SearchByEmailAsync(string email)
+        {
+            return await _dbcontext.Donors.Where(c => c.IsDeleted.Equals(false) && c.Email==email)
+                .SingleOrDefaultAsync();
         }
     }
 }
